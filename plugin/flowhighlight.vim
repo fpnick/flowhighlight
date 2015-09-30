@@ -50,7 +50,7 @@ while i <= max_level
       let match_pat = '.*\%'.line(".").'l.*'
       exec 'syn match '. s:lcolor_grp . i  . ' "' . match_pat . '" containedin=ALL'
    endw
-   let match_pat = 'flowhighlightlevel'.string(i)
+   let match_pat = '!flowhighlightlevel'.string(i)
    execute 'normal :%s/' . match_pat . '//g'
    let i = i+1
 endw
@@ -58,10 +58,19 @@ endw
 :normal 'T
 endfunction
 
+function! FlowHighlight_clear()
+   let i = 0
+   while i <= s:lcolor_max
+      exec 'syn clear ' . s:lcolor_grp . i
+      let i = i+1
+   endw
+endfunction
+
 " --------------------------------
 "  Expose our commands to the user
 " --------------------------------
 command! FlowHighlight call FlowHighlight()
+command! FlowHighlightClear call FlowHighlight_clear()
 
 " #############################################################################
 " The code after this line is from highlight.vim
