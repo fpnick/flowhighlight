@@ -14,15 +14,29 @@ python << endOfPython
 
 from flowhighlight import find_flow
 
+old_buffer = vim.current.buffer
 vim.current.buffer[:] = find_flow(vim.current.buffer[:])
 
 endOfPython
 
+:normal G
+let max_level = eval(getline("."))
+:normal dd
 let i = 0
-while i < s:lcolor_max
-   let match_pat = '.*flowhighlightlevel'.string(i)
-   exec 'syn match '. s:lcolor_grp . i  . ' "' . match_pat . '" containedin=ALL'
-   " :normal! %s/flowhighlightlevel//g<cr>
+while i <= max_level
+   :normal gg
+   let curr_line = line(".")
+   let last_line = -1
+   while curr_line > last_line
+      let last_line = curr_line
+      let match_pat = 'flowhighlightlevel'.string(i)
+      execute 'normal /' . match_pat . ''
+      let curr_line = line(".")
+      let match_pat = '.*\%'.line(".").'l.*'
+      exec 'syn match '. s:lcolor_grp . i  . ' "' . match_pat . '" containedin=ALL'
+   endw
+   let match_pat = 'flowhighlightlevel'.string(i)
+   execute 'normal :%s/' . match_pat . '//g'
    let i = i+1
 endw
 
