@@ -1,13 +1,30 @@
-" --------------------------------
-" Add our plugin to the path
-" --------------------------------
+" File: flowhighlight.vim
+" Author: Fabian P. Nick <fp.nick@gmail.com>
+" Version: 0.1
+" Description: 
+"   Highlights if-else-endif structures in different colors based on
+"   their 'level' in the program flow. 
+"   As of October 2015 only works with Fortran.
+"   VERY EARLY DEVELOPMENT VERSION!
+" Uasge:
+"   Use the 'FlowHighlight' command.
+" Configuration:
+"   To define custom colors set the following variables
+"     g:lcolor_bg - Background color for line highlighting
+"     g:lcolor_fg - Foreground color for line highlighting
+"     g:pcolor_bg - Background color for pattern highlighting
+"     g:pcolor_fg - Foreground color for pattern highlighting
+" Limitation:
+"   Only works with a very limited FORTRAN syntax
+" Acknowledgement:
+"   Thanks to Amit Sethi, Dan Sharp, Michael Geddes and Benji Fisher
+"   for their wonderful pieces of code.
+"   Also thanks to Jarrod Taylor for his Vim Plugin framework.
+
 python import sys
 python import vim
 python sys.path.append(vim.eval('expand("<sfile>:h")'))
 
-" --------------------------------
-"  Function(s)
-" --------------------------------
 function! FlowHighlight()
 :normal mT
 
@@ -46,25 +63,25 @@ endfunction
 " --------------------------------
 command! FlowHighlight call FlowHighlight()
 
-" Define colors for Line highlight
+" #############################################################################
+" The code after this line is from highlight.vim
+" (http://www.vim.org/scripts/script.php?script_id=1599) by Amit Sethi.
 
+
+" Define colors for Line highlight
 if !exists('g:lcolor_bg')
    let g:lcolor_bg = "purple,seagreen,violet,lightred,lightgreen,lightblue,darkmagenta,slateblue"
 endif
-
 if !exists('g:lcolor_fg')
    let g:lcolor_fg = "white,white,black,black,black,black,white,white"
 endif
-
 if !exists('g:lcolor_bg_cterm')
    let g:lcolor_bg_cterm = "Blue,Green,Cyan,Red,Yellow,Magenta,Brown,LightGray"
 endif
-
 if !exists('g:lcolor_fg_cterm')
    let g:lcolor_fg_cterm = "White,White,White,White,White,White,Black,Black"
 endif
-" #############################################################################
-" HighlightInitL: Initialize the highlight groups for line highlight
+" HighlightInitFH: Initialize the highlight groups for line highlight
 " Based on 'MultipleSearchInit' function developed by Dan Sharp in 
 " MultipleSearch2.vim at http://www.vim.org/scripts/script.php?script_id=1183 
 function! s:HighlightInitFH()
@@ -118,21 +135,6 @@ function! s:ItemCount(string)
     endwhile
     return itemCount
 endfunction
-" ItemCount: Returns the number of items in the given string.
-" Developed by Dan Sharp in MultipleSearch2.vim at
-" http://www.vim.org/scripts/script.php?script_id=1183 
-function! s:ItemCount(string)
-    let itemCount = 0
-    let newstring = a:string
-    let pos = stridx(newstring, ',')
-    while pos > -1
-        let itemCount = itemCount + 1
-        let newstring = strpart(newstring, pos + 1)
-        let pos = stridx(newstring, ',')
-    endwhile
-    return itemCount
-endfunction
-
 " #############################################################################
 
 call s:HighlightInitFH()
