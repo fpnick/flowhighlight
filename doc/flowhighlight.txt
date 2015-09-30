@@ -1,0 +1,25 @@
+*flowhighlight.txt* A short multi line description of your plugin
+
+===============================================================================
+CONTENTS                                                        *flowhighlight*
+
+    1. Intro ............................................ |flowhighlight-intro|
+    2. Requirements .............................. |flowhighlight-requirements|
+    3. Usage ............................................ |flowhighlight-usage|
+    4. Licence ........................................ |flowhighlight-licence|
+===============================================================================
+1. Intro                                                  *flowhighlight-intro*
+
+Overview of plugin
+
+2. Requirements                                    *flowhighlight-requirements*
+
+What additional programs are required to run the plugin
+
+3. Usage                                                  *flowhighlight-usage*
+
+How to use the plugin. What functions does it give the user?
+
+4. Licence                                              *flowhighlight-licence*
+
+This is open source make sure to include a licence
