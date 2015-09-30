@@ -8,15 +8,13 @@ python sys.path.append(vim.eval('expand("<sfile>:h")'))
 " --------------------------------
 "  Function(s)
 " --------------------------------
-function! TemplateExample()
-" :normal mT
+function! FlowHighlight()
+:normal mT
+
 python << endOfPython
-
 from flowhighlight import find_flow
-
 old_buffer = vim.current.buffer
 vim.current.buffer[:] = find_flow(vim.current.buffer[:])
-
 endOfPython
 
 :normal G
@@ -40,12 +38,13 @@ while i <= max_level
    let i = i+1
 endw
 
+:normal 'T
 endfunction
 
 " --------------------------------
 "  Expose our commands to the user
 " --------------------------------
-command! Example call TemplateExample()
+command! FlowHighlight call FlowHighlight()
 
 " Define colors for Line highlight
 
