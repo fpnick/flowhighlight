@@ -1,5 +1,0 @@
-if foo then
-  if baz then
-    bar
-  endif
-endif
