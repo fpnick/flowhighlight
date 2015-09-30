@@ -1,7 +1,7 @@
 # flowhighlight
 
-Highlights if-else-endif structures in different colors based on
-their 'level' in the program flow. 
+This is a Vim plugin that highlights if-else-endif structures
+in different colors based on their 'level' in the program flow. 
 As of October 2015 only works with Fortran.
 VERY EARLY DEVELOPMENT VERSION!
 
