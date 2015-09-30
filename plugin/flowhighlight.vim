@@ -35,10 +35,10 @@ endOfPython
 
 :normal mT
 :normal G
-let max_level = eval(getline("."))
+let g:fhl_max_level = eval(getline("."))
 :normal dd
 let i = 0
-while i <= max_level
+while i <= g:fhl_max_level
    :normal gg
    let curr_line = line(".")
    let last_line = -1
@@ -60,7 +60,7 @@ endfunction
 
 function! FlowHighlight_clear()
    let i = 0
-   while i <= s:lcolor_max
+   while i <= g:fhl_max_level
       exec 'syn clear ' . s:lcolor_grp . i
       let i = i+1
    endw
