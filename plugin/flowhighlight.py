@@ -8,7 +8,7 @@ def find_flow(buffer_contents):
     for i in range(len(buffer_contents)):
          
         string = buffer_contents[i]
-        if ( re.match('[ ]*if .* then.*',string,re.IGNORECASE) ):
+        if ( re.match('[ ]*if.*then.*',string,re.IGNORECASE) ):
             buffer_contents[i] = string + '!flowhighlightlevel' + str(level)
             level = level+1
             if max_level < level:
