@@ -7,7 +7,8 @@
 "   As of October 2015 only works with Fortran.
 "   VERY EARLY DEVELOPMENT VERSION!
 " Uasge:
-"   Use the 'FlowHighlight' command.
+"   Use the 'FlowHighlight' command to highlight control structures.
+"   Use 'FlowHighlightClear' to disable highlights.
 " Configuration:
 "   To define custom colors set the following variables
 "     g:lcolor_bg - Background color for line highlighting
