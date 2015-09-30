@@ -26,7 +26,6 @@ python import vim
 python sys.path.append(vim.eval('expand("<sfile>:h")'))
 
 function! FlowHighlight()
-:normal mT
 
 python << endOfPython
 from flowhighlight import find_flow
@@ -34,6 +33,7 @@ old_buffer = vim.current.buffer
 vim.current.buffer[:] = find_flow(vim.current.buffer[:])
 endOfPython
 
+:normal mT
 :normal G
 let max_level = eval(getline("."))
 :normal dd
