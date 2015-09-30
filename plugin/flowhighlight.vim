@@ -22,6 +22,7 @@ let i = 0
 while i < s:lcolor_max
    let match_pat = '.*flowhighlightlevel'.string(i)
    exec 'syn match '. s:lcolor_grp . i  . ' "' . match_pat . '" containedin=ALL'
+   " :normal! %s/flowhighlightlevel//g<cr>
    let i = i+1
 endw
 

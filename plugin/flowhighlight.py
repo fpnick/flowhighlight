@@ -8,6 +8,12 @@ def find_flow(buffer_contents):
             buffer_contents[i] = string + '!flowhighlightlevel' + str(level)
             level = level+1
         
+        if ( re.match('[ ]*else',string,re.IGNORECASE) ):
+            buffer_contents[i] = string + '!flowhighlightlevel' + str(level-1)
+
+        if ( re.match('[ ]*else if .* then',string,re.IGNORECASE) ):
+            buffer_contents[i] = string + '!flowhighlightlevel' + str(level-1)
+        
         if ( re.match('[ ]*endif',string,re.IGNORECASE) ):
             level = level-1
             buffer_contents[i] = string + '!flowhighlightlevel' + str(level)
