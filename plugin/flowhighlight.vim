@@ -26,8 +26,13 @@ python import sys
 python import vim
 python sys.path.append(vim.eval('expand("<sfile>:h")'))
 
+" Main function to highlight control structures.
 function! FlowHighlight()
 
+" Python script adding 'tags' to control stuctures that are used to
+" highlight the structures later.
+" Also writes maximal 'depth' of control structures to the last line
+" of the file.
 python << endOfPython
 from flowhighlight import find_flow
 old_buffer = vim.current.buffer
@@ -35,9 +40,13 @@ vim.current.buffer[:] = find_flow(vim.current.buffer[:])
 endOfPython
 
 :normal mT
+
+" Get maximum 'depth' of structures in this file
 :normal G
 let g:fhl_max_level = eval(getline("."))
 :normal dd
+
+" For each level, highlight the control structures
 let i = 0
 while i <= g:fhl_max_level
    :normal gg
@@ -59,6 +68,7 @@ endw
 :normal 'T
 endfunction
 
+" Clear highlights.
 function! FlowHighlight_clear()
    let i = 0
    while i <= g:fhl_max_level
