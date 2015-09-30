@@ -1,5 +1,10 @@
 # flowhighlight
 
+Highlights if-else-endif structures in different colors based on
+their 'level' in the program flow. 
+As of October 2015 only works with Fortran.
+VERY EARLY DEVELOPMENT VERSION!
+
 ## Installation
 
 Use your plugin manager of choice.
@@ -18,5 +23,4 @@ Use your plugin manager of choice.
 
 ## Todo
 
-1. Write a plugin
-2. Write documentation
+1. Extend to other languages.
