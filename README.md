@@ -5,6 +5,8 @@ in different colors based on their 'level' in the program flow.
 As of October 2015 only works with Fortran.
 VERY EARLY DEVELOPMENT VERSION!
 
+![Screenshot](http://i.imgur.com/EEkyytY.jpg)
+
 ## Installation
 
 Use your plugin manager of choice.
