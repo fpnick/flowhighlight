@@ -77,11 +77,18 @@ function! FlowHighlight_clear()
    endw
 endfunction
 
+" Refresh highlights
+function! FlowHighlight_refresh()
+   call FlowHighlight_clear()
+   call FlowHighlight()
+endfunction
+
 " --------------------------------
 "  Expose our commands to the user
 " --------------------------------
 command! FlowHighlight call FlowHighlight()
 command! FlowHighlightClear call FlowHighlight_clear()
+command! FlowHighlightRefresh call FlowHighlight_refresh()
 
 " #############################################################################
 " The code after this line is from highlight.vim
