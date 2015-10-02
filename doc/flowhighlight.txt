@@ -22,6 +22,7 @@ Python (developed with 3.4.0)
 3. Usage                                                  *flowhighlight-usage*
 
 Use the 'FlowHighlight' command to highlight control structures.
+Use 'FlowHighlightRefresh' to refresh highlights
 Use 'FlowHighlightClear' to disable highlights.
 
 4. Licence                                              *flowhighlight-licence*

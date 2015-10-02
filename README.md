@@ -23,6 +23,10 @@ Use your plugin manager of choice.
   - Add `Plug 'https://github.com/fpnick/flowhighlight'` to .vimrc
   - Run `:PlugInstall`
 
+## Changelog
+- 0.1.1
+  - Added refresh function
+
 ## Todo
 
 1. Extend to other languages.
